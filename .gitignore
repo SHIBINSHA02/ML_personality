@@ -1,0 +1,51 @@
+# Python virtual environment
+env/
+venv/
+.venv/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebook checkpoints (if applicable)
+.ipynb_checkpoints/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Python package installation files
+*.egg
+*.egg-info/
+dist/
+build/
+pip-wheel-metadata/
+.eggs/
+
+# Environment and dependency lock files (if not needed in repo)
+*.lock
+Pipfile.lock
+
+# Sensitive or local configuration files
+.env
+*.local
+*.secret
+
+# Large data files (optional, comment out if you want to track data.csv)
+# data.csv
+
+# Output files (optional, comment out if you want to track Images/)
+# Images/
