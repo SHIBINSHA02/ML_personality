@@ -31,11 +31,8 @@ if st.button("Predict Personality"):
     result = personality_model.predict(input_data)
     st.success(f"The predicted personality is: **{result}**")
 
-# Optional: Show model coefficients
+
 if st.checkbox("Show Model Coefficients"):
-    coeff = personality_model.model.coef_[0]
-    features = ['Time_spent_Alone', 'Stage_fear', 'Social_event_attendance', 'Going_outside',
-                'Drained_after_socializing', 'Friends_circle_size', 'Post_frequency']
-    coef_dict = dict(zip(features, coeff))
-    st.write(coef_dict)
+    coef_dict = personality_model.get_coefficients()
+    st.table(coef_dict)  # Works because keys are feature names
     st.write(f"Intercept: {personality_model.model.intercept_[0]:.4f}")
