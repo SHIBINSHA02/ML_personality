@@ -1,3 +1,4 @@
+# requirements.txt
 joblib==1.5.1
 numpy==2.3.0
 pandas==2.3.0
