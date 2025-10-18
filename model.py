@@ -44,7 +44,15 @@ class PersonalityModel:
                 'Drained_after_socializing', 'Friends_circle_size', 'Post_frequency']]
         y = df['Personality']
 
-        self.model = LogisticRegression(max_iter=1000)
+        from sklearn.preprocessing import StandardScaler
+        from sklearn.linear_model import LogisticRegression
+        from sklearn.pipeline import Pipeline
+
+     
+        self.model = Pipeline([
+            ('scaler', StandardScaler()),
+            ('logreg', LogisticRegression(max_iter=1000, C=1.0, penalty='l2'))
+        ])
         self.model.fit(X, y)
 
     def predict(self, input_data):
@@ -64,6 +72,8 @@ class PersonalityModel:
         return pred_label
 
     def get_coefficients(self):
-        return dict(zip(self.model.coef_[0], ['Time_spent_Alone','Stage_fear','Social_event_attendance',
-                                             'Going_outside','Drained_after_socializing','Friends_circle_size',
-                                             'Post_frequency']))
+        coef = self.model.named_steps['logreg'].coef_[0]
+        feature_names = ['Time_spent_Alone','Stage_fear','Social_event_attendance',
+                        'Going_outside','Drained_after_socializing','Friends_circle_size',
+                        'Post_frequency']
+        return dict(zip(feature_names, coef))
